@@ -1,0 +1,27 @@
+{
+  "name": "aroe",
+  "homepage": "https://github.com/rogerham",
+  "authors": [
+    "BH4DKS"
+  ],
+  "description": "Amateur radio operator examination self test tool for China HAM.",
+  "main": "index.html",
+  "keywords": [
+    "ham",
+    "radio",
+    "exam"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.4",
+    "underscore": "^1.8.3"
+  }
+}

@@ -1,0 +1,6 @@
+.idea
+bower_components
+node_modules
+old
+tools
+.DS_Store
