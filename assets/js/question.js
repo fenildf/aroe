@@ -1,6 +1,6 @@
-function Question(id, name, picture, answers, tips){
+function Question(id, text, picture, answers, tips){
     this.id = id;
-    this.name = name;
+    this.text = text;
     this.picture = picture;
     this.answers = answers;
     this.tips = tips;

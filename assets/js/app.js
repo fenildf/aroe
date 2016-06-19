@@ -68,7 +68,6 @@ App.prototype.showQuestion = function(index, question, totalCount){
     var self = this;
     var classLevel = utils.getRoot(location.hash);
     var exerciseType = utils.getExerciseType(location.hash);
-
     $(self.options.question.container)
         .empty()
         .append(self.options.question.template(question))
@@ -194,12 +193,13 @@ App.prototype.getErrorQuestions = function(classLevel){
 };
 
 App.prototype.addErrorQuestions = function(classLevel, question){
+    console.log(question);
     var errorQuestions = this.getErrorQuestions(classLevel);
 
     if(!_.any(errorQuestions, function(q){return q.id == question.id;})){
         errorQuestions.push(question);
+        console.log(errorQuestions);
         this.saveQuestions(classLevel, EXERCISE_TYPE.error, errorQuestions);
-        localStorage.setItem('aroe.' + classLevel + '.questions.' + EXERCISE_TYPE.error, JSON.stringify(errorQuestions));
         $(this.options.exerciseType.error).find('span.badge').text(errorQuestions.length);
     }
 };
