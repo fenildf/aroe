@@ -47,6 +47,15 @@
         <p class="text-center"><small>Copyright (C) 2016 BH4DKS</small></p>
     </div>
 </div>
+<div class="modal fade" id="please-wait-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">数据加载中, 请稍等……</h4>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script id="class-select" type="text/html">
     <div class="row">
@@ -235,7 +244,8 @@
                 clearAllErrorAnswers: 'ul.dropdown-menu a.clear-error-answers',
                 clearProgress: 'ul.dropdown-menu a.clear-progress',
                 clearAll: 'ul.dropdown-menu a.clear-all'
-            }
+            },
+            waiting: '#please-wait-dialog'
         });
     });
 </script>

@@ -98,6 +98,7 @@ App.prototype.load = function(classLevel, exerciseType){
     var storedIndex = self.getStoredIndex(classLevel, exerciseType);
 
     function gotData(data, isFromAjax){
+        self.hideWaiting();
         if(isFromAjax){
             if(exerciseType == EXERCISE_TYPE.random){
                 data = utils.randomizeData(data);
@@ -127,6 +128,7 @@ App.prototype.load = function(classLevel, exerciseType){
     }
     if(storedQuestions.length === 0 && exerciseType != EXERCISE_TYPE.error){
         console.log('read from json file');
+        self.showWaiting();
         $.ajax({
             dataType: "json",
             url: classLevel + '.json',
@@ -208,5 +210,13 @@ App.prototype.clearAllErrorAnswers = function(classLevel){
     localStorage.removeItem('aroe.' + classLevel + '.questions.' + EXERCISE_TYPE.error);
     localStorage.removeItem('aroe.' + classLevel + '.index.' + EXERCISE_TYPE.error);
     $(this.options.exerciseType.error).find('span.badge').text('0');
+};
+
+App.prototype.showWaiting = function(){
+    $(this.options.waiting).modal('show');
+};
+
+App.prototype.hideWaiting = function(){
+    $(this.options.waiting).modal('hide');
 };
 
