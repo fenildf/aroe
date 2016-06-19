@@ -53,6 +53,9 @@ function App(options){
             $(self.options.toolbar.clearAllErrorAnswers).on('click', function(){
                 self.clearAllErrorAnswers(root);
             });
+            $(self.options.toolbar.clearAll).on('click', function(){
+                self.clearAll();
+            });
         } else if(root == 'readme'){
             self.switchTo(self.options.routes.readme());
         } else {
@@ -210,6 +213,11 @@ App.prototype.clearAllErrorAnswers = function(classLevel){
     localStorage.removeItem('aroe.' + classLevel + '.questions.' + EXERCISE_TYPE.error);
     localStorage.removeItem('aroe.' + classLevel + '.index.' + EXERCISE_TYPE.error);
     $(this.options.exerciseType.error).find('span.badge').text('0');
+};
+
+App.prototype.clearAll = function(){
+    localStorage.clear();
+    location.hash = '#index';
 };
 
 App.prototype.showWaiting = function(){
