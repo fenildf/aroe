@@ -8,7 +8,7 @@ var CLASS_LEVEL = {
     classA: 'class-a',
     classB: 'class-b',
     classC: 'class-c'
-}
+};
 
 function App(options){
     _.templateSettings = {
@@ -18,6 +18,7 @@ function App(options){
     var self = this;
     this.options = options;
     this.options.routes.index = _.template($(this.options.routes.index).html());
+    this.options.routes.readme = _.template($(this.options.routes.readme).html());
     this.options.routes.others = _.template($(this.options.routes.others).html());
     this.options.question.template = _.template($(this.options.question.template).html());
 
@@ -52,6 +53,8 @@ function App(options){
             $(self.options.toolbar.clearAllErrorAnswers).on('click', function(){
                 self.clearAllErrorAnswers(root);
             });
+        } else if(root == 'readme'){
+            self.switchTo(self.options.routes.readme());
         } else {
             self.switchTo(self.options.routes.index());
         }
@@ -70,7 +73,7 @@ App.prototype.showQuestion = function(index, question, totalCount){
         .empty()
         .append(self.options.question.template(question))
         .find('button')
-        .on('click', function(event){
+        .on('click', function(){
             var btn = $(this);
             if(btn.attr('iscorrect') === 'true'){
                 self.questions.next();
