@@ -203,7 +203,6 @@ App.prototype.addErrorQuestions = function(classLevel, question){
 
     if(!_.any(errorQuestions, function(q){return q.id == question.id;})){
         errorQuestions.push(question);
-        console.log(errorQuestions);
         this.saveQuestions(classLevel, EXERCISE_TYPE.error, errorQuestions);
         $(this.options.exerciseType.error).find('span.badge').text(errorQuestions.length);
     }

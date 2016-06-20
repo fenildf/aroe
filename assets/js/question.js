@@ -1,7 +1,13 @@
 function Question(id, text, picture, answers, tips){
     this.id = id;
     this.text = text;
-    this.picture = picture;
+    
+    if(picture == ''){
+        this.picture = '';
+    } else {
+        this.picture = '<img width="200" src="' + picture + '" />';
+    }
+    
     this.answers = answers;
     this.tips = tips;
 }

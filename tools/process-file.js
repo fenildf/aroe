@@ -18,27 +18,26 @@ var files = [
 ];
 
 files.forEach(function (f) {
-    debugger;
-    var fileContent = iconv.fromEncoding(fs.readFileSync(f.source), 'GBK').split('\r\n');
+    var fileContent = iconv.fromEncoding(fs.readFileSync(f.source), 'GBK').split('\n');
 
     fileContent.splice(0, 3);
 
     var questions = generateQuestions(fileContent);
 
-    fs.writeFileSync(f.dest, JSON.stringify(questions));
+    fs.writeFileSync(path.join('../', f.dest), JSON.stringify(questions));
 });
 
 function generateQuestions(rawData){
     var questions = [];
 
     for(var i = 0; i < rawData.length; i++){
-        var id = rawData[i++].replace('[I]', '');
-        var text = rawData[i++].replace('[Q]', '');
-        var answerA = rawData[i++].replace('[A]', '');
-        var answerB = rawData[i++].replace('[B]', '');
-        var answerC = rawData[i++].replace('[C]', '');
-        var answerD = rawData[i++].replace('[D]', '');
-        var picture = rawData[i++].replace('[P]', '');
+        var id = rawData[i++].replace('[I]', '').replace('\r', '');
+        var text = rawData[i++].replace('[Q]', '').replace('\r', '');
+        var answerA = rawData[i++].replace('[A]', '').replace('\r', '');
+        var answerB = rawData[i++].replace('[B]', '').replace('\r', '');
+        var answerC = rawData[i++].replace('[C]', '').replace('\r', '');
+        var answerD = rawData[i++].replace('[D]', '').replace('\r', '');
+        var picture = rawData[i++].replace('[P]', '').replace('\r', '').replace('jpg', 'gif');
         
         var question = {
             "id": id,
@@ -74,7 +73,7 @@ function generateQuestions(rawData){
 
 function getPicture(filename){
     if(filename != ''){
-        return 'data:image/jpeg;base64,' + fs.readFileSync(path.join('img', filename)).toString('base64');
+        return 'data:image/gif;base64,' + fs.readFileSync(path.join('img', filename)).toString('base64');
     }
 
     return filename;
