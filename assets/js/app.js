@@ -91,7 +91,7 @@ App.prototype.showQuestion = function(index, question, totalCount){
 App.prototype.updateProgress = function(index, totalCount){
     var width = (index + 1) / totalCount * 100.0;
     width = width.toFixed(0);
-    $(this.options.progressbar).css("width", width + "%").text(width + "%");
+    $(this.options.progressbar).css("width", width + "%").text((index+1) + ' / ' + totalCount);
 };
 
 App.prototype.load = function(classLevel, exerciseType){

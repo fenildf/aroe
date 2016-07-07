@@ -36,9 +36,9 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <h3 class="text-center">
+        <h5 class="text-center">
             <span class="level"></span>业余无线电台操作证书考试
-        </h3>
+        </h5>
     </div>
     <div id="main-container">
 
@@ -97,15 +97,41 @@
 </script>
 
 <script id="screen-exam" type="text/html">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="assets/img/favicon-96x96.png" style="height:20px;width:20px;"/></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active btn-random-questions" exercise="random"><a href="javascript:void(0)">随机做题</a></li>
+                    <li class="btn-ordered-questions" exercise="sequence"><a href="javascript:void(0)">顺序做题</a></li>
+                    <li class="btn-error-questions" exercise="error"><a href="javascript:void(0)">错题 <span class="badge">0</span></a>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="btn-random-questions"><a href="#index">回首页</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div id="message" class="alert alert-success" role="alert">正确！正在加载下一题……</div>
             <div class="btn-toolbar" role="toolbar" aria-label="...">
                 <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default btn-first">第一题</button>
+
                     <button type="button" class="btn btn-default btn-prev">上一题</button>
                     <button type="button" class="btn btn-default btn-next">下一题</button>
-                    <button type="button" class="btn btn-default btn-last">最末题</button>
+
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -113,8 +139,11 @@
                         更多 <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)" class="btn-first">第一题</a></li>
+                        <li><a href="javascript:void(0)" class="btn-last">最末题</a></li>
+                        <li role="separator" class="divider"></li>
                         <!--<li><a href="#" class="remove-from-error-answers">将当前题移出错题</a></li>
-                        <li role="separator" class="divider"></li>-->
+                        -->
                         <li><a href="javascript:void(0)" class="clear-error-answers">清除错题</a></li>
                         <!--<li><a href="#" class="clear-progress">清除当前进度</a></li>-->
                         <li><a href="javascript:void(0)" class="clear-all">清除所有</a></li>
@@ -127,10 +156,7 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-1">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active btn-random-questions" exercise="random"><a href="javascript:void(0)">随机做题</a></li>
-                <li role="presentation" class="btn-ordered-questions" exercise="sequence"><a href="javascript:void(0)">顺序做题</a></li>
-                <li role="presentation" class="btn-error-questions" exercise="error"><a href="javascript:void(0)">错题 <span class="badge">0</span></a>
-                <li role="presentation" class="btn-random-questions"><a href="#index">回首页</a></li>
+
             </ul>
         </div>
         <div class="col-md-6">
@@ -237,10 +263,10 @@
             },
             progressbar: '.progress-bar',
             toolbar: {
-                first: 'div.btn-group .btn-first',
+                first: 'ul.dropdown-menu .btn-first',
                 prev: 'div.btn-group .btn-prev',
                 next: 'div.btn-group .btn-next',
-                last: 'div.btn-group .btn-last',
+                last: 'ul.dropdown-menu .btn-last',
                 //removeFromErrorList: 'ul.dropdown-menu a.remove-from-error-answers',
                 clearAllErrorAnswers: 'ul.dropdown-menu a.clear-error-answers',
                 //clearProgress: 'ul.dropdown-menu a.clear-progress',
